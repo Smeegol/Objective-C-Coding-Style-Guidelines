@@ -4,7 +4,7 @@
 * [关于](#关于)
 * [参考资料](#参考资料)
 * [术语](#术语)
-* [Xcode 设置](#Xcode 设置)
+* [Xcode设置](#Xcode设置)
 * [语言](#语言)
 * [空格与换行](#空格与换行)
 * [工程组织](#工程组织)
@@ -16,7 +16,8 @@
 
 ## 术语* 大写驼峰式命名法——每个词首字符大写，其余字符均小写，如`AppDelegate`、`Global`、`DataService`等；* 小写驼峰式命名法——除第一个词首字符小写外，其余词首字符大写，其他字符均小写，如`fileName`、`tempArray`、`titleLabel`等。
 
-## Xcode 设置* 使用等宽字体（如 Xcode 默认的 SF Menlo Regular）而不是非等宽字体，利于视觉上的上下对齐；* 每行不超过 120 个字符，通过 Preferences->Text Editing->Editing->Page guide at column 输入 120 来设置宽度提醒线；* 使用空格缩进而非 Tab 缩进，且缩进宽度为 4 个字符：Preferences->Text Editing->Indentation->Prefer indent using 选择 Spaces，Tab width 输入 4，Indent width 输入 4。
+## Xcode设置* 使用等宽字体（如 Xcode 默认的 SF Menlo Regular）而不是非等宽字体，利于视觉上的上下对齐；* 每行不超过 120 个字符：Preferences->Text Editing->Editing->Page guide at column 输入 120；* 使用空格缩进而非 Tab 缩进，且缩进宽度为 4 个字符：Preferences->Text Editing->Indentation->Prefer indent using 选择 Spaces，Tab width 输入 4，Indent width 输入 4；
+* 自动剔除行尾空白字符：Preferences->Text Editing->Automatically trim trailing whitespace 勾选。
 
 ## 语言* 使用美式英语；
 
@@ -29,7 +30,11 @@ UIColor *myColor = [UIColor whiteColor];
 ```objc
 UIColor *myColour = [UIColor whiteColor];
 ```
-## 空格与换行* 单目运算符与操作数之间不留空，如`&`、`!`、`^`；双目运算符应与它们的操作数用1个空格分开；逗号和分号紧跟前面的语句，与后面的语句用1个空格分开；* 指针`*`与前面的数据类型留1个空格，紧贴后面的变量名；
+## 空格与换行* 普通代码行之间最多留 1 个空白行；
+* 语义、功能不同的代码行之间最多留 2 个空白行；
+* 同一行代码只包含一条语句；* 单目运算符与操作数之间不留空，如 `&`、`!`、`^`；
+* 双目运算符与操作数之间留 1 个空格；
+* 逗号和分号紧跟前面的语句，与后面的语句之间留 1 个空格；* 指针符号 `*` 与前面的数据类型之间留 1 个空格，紧贴后面的变量名；
 
 **例如：**
 ```objc
@@ -45,7 +50,10 @@ NSString* password;
 ```objc
 NSString * password;
 ```
-* 方法大括号和其它大括号（比如`for`、`if`、`while`、`switch`等等）应在语句的同一行开始，而在新的一行关闭；**例如：**
+
+* 小括号与被它包含的内容之间不留空；
+* 中括号与被它包含的内容之间留 1 个空格；
+* 大括号与被它包含的内容之间留 1 个空格；* 大括号在语句的行尾开始，而在新的行首关闭；**例如：**
 ```objc
 if (user.isHappy) {
     //Do something
@@ -54,7 +62,7 @@ if (user.isHappy) {
 }
 ```
 
-* 为避免错误，条件语句体必须使用大括号，即便语句体中的语句可以不必使用大括号（比如只有一行语句）；
+* 条件语句体必须使用大括号，即使只有一行语句；
 
 **例如：**
 ```objc
@@ -74,7 +82,7 @@ if (!error)
 if (!error) return success;
 ```
 
-* 三元运算子：仅当使用该运算子可以让代码显得更清晰易懂时方可使用三元运算子，更多情况下应使用条件语句；
+* 三元运算符仅当使用该运算符让代码更清晰易懂时才使用，更多情况下使用条件语句；
 
 **例如：**
 ```objc
@@ -86,14 +94,12 @@ result = a > b ? x : y;
 result = a > b ? x = c > d ? c : d : y;
 ```
 
-* 在方法声明中，在(`-`/`+`)符号与返回值之间留1个空格。此外，参数与前面的冒号不留空，方法段与之间留1个空格；
+* 方法声明中，在 `-` / `+` 与返回值之间留 1 个空格。参数与前面的冒号之间不留空，方法段之间留 1 个空格；
 
 **例如：**
 ```objc
-- (void)setExampleText:(NSString *)text image:(UIImage *)image;
+- (void)setupWithText:(NSString *)text image:(UIImage *)image;
 ```
-
-* 为保证视觉上的整洁和代码组织，在方法之间应摒弃大段的空白行，提供且仅提供一行空白。
 ## 工程组织* 工程Group组织尽量跟本地磁盘实际路径相一致，利于定位；* 工程Group名尽量跟相关功能名或模块名相一致。不推荐按照类型来组织，比如有些将视图控制器类放到一个Group，视图类放到另外的Group的做法；* 工程Group尽量使用中文名，利于辨识；* 工程Group组织可按照约定俗成的来，比如第三方框架放在`Libs`、`Utils`、`公共`等Group中，Bean类放在`Bean` Group中，公共的自定义类及其他放到专门的Group中，命名为`Global`或`XxxUtils`、`XxxTools`等；* 资源文件的组织应跟上面的文件一样，文件应使用有意义的英文命名，应能表达它的用法；应避免使用中文或汉语拼音，除非表达更清晰、更利于辨识。## 命名方式* 常量：  * 应避免在代码中出现字面常数或常字符串，使用超过一次的应以宏或全局常量来替代；
   * 优先使用全局常量而非宏，应使用`static`方式声明常量；
   
@@ -159,7 +165,8 @@ typedef enum {
     RequestLoadedFailed
 } RequestLoadState;
 ```
-* 使用MVC模式，减少层与层之间的耦合；* 回调的最佳方式是使用代理模式，而不是使用Notification；* `delegate`属性使用`weak`，防止循环引用；* 所有自定义的`Notification`名应统一在公共文件中命名，便于甄别重复；* 本地存储：单一对象可用归档，简单属性可用`NSUserDefaults`，多个相同类型的数据可用`SQLite`；使用`FMDB`框架；
+* 使用MVC模式，减少层与层之间的耦合；
+* 优先使用 auto-synthesis。但如果有必要，@synthesize 和 @dynamic应该在实现中每个都声明新的一行；* 回调的最佳方式是使用代理模式，而不是使用Notification；* `delegate`属性使用`weak`，防止循环引用；* 所有自定义的`Notification`名应统一在公共文件中命名，便于甄别重复；* 本地存储：单一对象可用归档，简单属性可用`NSUserDefaults`，多个相同类型的数据可用`SQLite`；使用`FMDB`框架；
 * 数据库表名使用复数而不是单数，采用大写驼峰式命名法；各个字段使用下划线连接，采用小写写法；SQL语句中关键字使用大写，其他不变；
 * 使用通用的、约定俗成的`alloc`和`init`的方式创建实例，而不是使用`new`方法；* 使用`#pragma mark – XXX`来区别不同的区块；* 在创建单例对象的共享实例时，应使用线程安全模式；
 **例如：**```objc
