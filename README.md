@@ -1,21 +1,35 @@
-# iOS编码规范
-
-深圳市禾田科技有限公司 技术研发部
+# Objective-C 编码规范
 
 ## 目录
 * [关于](#关于)
 * [参考资料](#参考资料)
 * [术语](#术语)
-* [格式排版](#格式排版)
+* [Xcode 设置](#Xcode 设置)
+* [语言](#语言)
+* [空格与换行](#空格与换行)
 * [工程组织](#工程组织)
 * [命名方式](#命名方式)
 * [编程实践](#编程实践)
 
-## 关于为了统一团队协作下代码的规范性、风格的统一性以及编程的注意点，而制定本规范。本规范仅作为建议推广使用，原则上只要代码风格保持自身的规范性、风格的统一性，也是允许的，但是为了团队开发的确定性，遂希望iOS开发人员强制遵守。很多规范是语言通用的，有些是Objective-C特有的，本规范基于Apple编码规范、Xcode代码示例、Objective-C语言规范以及Java语言官方规范等文档，适用于使用Objective-C语言相关的工程。## 参考资料
-* Apple: [Coding Guidelines for Cocoa](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html)* Goole: [Objective-C Style Guide](http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml)* [NYTimes Objective-C Style Guide](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html)* [Daniel's Objective-C Coding Style Guidelines](http://desheng.me/2010/10/31/objective-c%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/)
+## 关于为了统一团队协作下代码的规范性、风格的统一性以及编程的注意点，制定本规范。本规范仅作为建议推广使用，原则上只要代码风格保持自身的规范性、风格的统一性，也是允许的，但是为了团队开发的确定性，遂希望 iOS 开发人员强制遵守。很多规范是语言通用的，有些是 Objective-C 特有的，本规范基于 Apple 编码规范、Xcode 代码示例、Objective-C 语言规范以及 Java 语言官方规范等文档，适用于使用 Objective-C 语言相关的工程。## 参考资料
+* [Coding Guidelines for Cocoa](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html)* [The official raywenderlich.com Objective-C style guide](https://github.com/raywenderlich/objective-c-style-guide)
 
-## 术语* 大写驼峰式命名法——每个词首字符大写，其余字符均小写，如`AppDelegate`、`Global`、`DataTransfer`等；* 小写驼峰式命名法——除第一个词首字符小写外，其余词首字符大写，其他字符均小写，如`fileName`、`tempArray`、`titleLabel`等；
-## 格式排版* 使用等宽字体（如Xcode默认的Menlo Regular）而不是非等宽字体，利于视觉上的上下对齐；* 每行不超过100个字符，Xcode通过Preferences->Text Editing->Editing-> Page guide at column输入100来设置宽度提醒线；* 由于空格缩进相比Tab缩进，所敲键盘次数过多，也没有Tab缩进直观，所以这里使用Tab缩进而非空格缩进，并且缩进宽度为4个字符。Xcode通过Preferences->Text Editing->Indentation，Prefer indent using选择Tabs，Tab width输入4，Indent width输入4来进行设置。* 单目运算符与操作数之间不留空，如`&`、`!`、`^`；双目运算符应与它们的操作数用1个空格分开；逗号和分号紧跟前面的语句，与后面的语句用1个空格分开；* 指针`*`与前面的数据类型留1个空格，紧贴后面的变量名；
+## 术语* 大写驼峰式命名法——每个词首字符大写，其余字符均小写，如`AppDelegate`、`Global`、`DataService`等；* 小写驼峰式命名法——除第一个词首字符小写外，其余词首字符大写，其他字符均小写，如`fileName`、`tempArray`、`titleLabel`等。
+
+## Xcode 设置* 使用等宽字体（如 Xcode 默认的 SF Menlo Regular）而不是非等宽字体，利于视觉上的上下对齐；* 每行不超过 120 个字符，通过 Preferences->Text Editing->Editing->Page guide at column 输入 120 来设置宽度提醒线；* 使用空格缩进而非 Tab 缩进，且缩进宽度为 4 个字符：Preferences->Text Editing->Indentation->Prefer indent using 选择 Spaces，Tab width 输入 4，Indent width 输入 4。
+
+## 语言* 使用美式英语；
+
+**例如：**
+```objc
+UIColor *myColor = [UIColor whiteColor];
+```
+
+**而不是**
+```objc
+UIColor *myColour = [UIColor whiteColor];
+```
+## 空格与换行* 单目运算符与操作数之间不留空，如`&`、`!`、`^`；双目运算符应与它们的操作数用1个空格分开；逗号和分号紧跟前面的语句，与后面的语句用1个空格分开；* 指针`*`与前面的数据类型留1个空格，紧贴后面的变量名；
 
 **例如：**
 ```objc
