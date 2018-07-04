@@ -88,7 +88,7 @@ UIButton *setBtn;
   * 分类使用“父类+分类名”来命名，如 `UIImageView+AFNetworking.h`。
 * 杂项：
   * 上面所有应使用有意义的英文命名，应能表达它的用法，避免使用汉语拼音；
-  * 推荐使用约定俗成的缩写，比如 `app`（application）, `bg`（background）, `func`（function）, `info`（information）, `init`（initialize）, `max`（maximum）, `min`（minimum）, `msg`（message）, `rect`（rectangle）, `temp`（temporary）等；
+  * 推荐使用约定俗成的缩写，比如 `app`（application）、`bg`（background）、`dict`（dictionary）、`func`（function）、`info`（information）、`init`（initialize）、`max`（maximum）、`min`（minimum）、`msg`（message）、`rect`（rectangle）、`temp`（temporary）等；
   * 专有名词保持通用的大小写格式，要么全部大写，要么全部小写，比如 `XML`、`HTML`、`URL`、`HTTP`、`FTP`、`JPG`、`PNG`、`GIF`、`RGB` 等。
 
 ## 空格与换行
@@ -232,7 +232,10 @@ typedef NS_ENUM(NSInteger, RequestLoadState) {
 * 回调的最佳方式是使用代理模式，而不是使用 Notification；
 * `delegate` 属性使用 `weak`；
 * Block 使用 `copy`；
-* 所有自定义的`Notification`名应统一在公共文件中命名，便于甄别重复；
+* Block 内部使用时一定非空判断；
+* Block 外部调用时，里面内容为空尽量使用 nil；
+* 所有 Block 都 weakSelf，打破循环引用；
+* 所有自定义的 `Notification` 名应统一在公共文件中命名，便于甄别重复；
 * 本地存储：单一对象用归档，简单属性用 `NSUserDefaults`，多个相同类型的数据用 `SQLite`；使用 `FMDB`；
 * 数据库表名使用复数，采用大写驼峰式命名法；列使用下划线连接，采用小写；SQL 语句中关键字使用大写；
 * 使用 `alloc` 和 `init` 方法创建实例，而不是使用 `new` 方法；
@@ -255,8 +258,8 @@ typedef NS_ENUM(NSInteger, RequestLoadState) {
 
 **例如：**
 ```objc
-NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve"];
-NSDictionary *productManagers = @{@"iPhone" : @"Kate", @"iPad" : @"Kamal"};
+NSArray *names = @[ @"Brian", @"Matt", @"Chris", @"Alex", @"Steve" ];
+NSDictionary *productManagers = @{ @"iPhone" : @"Kate", @"iPad" : @"Kamal" };
 NSNumber *shouldUseLiterals = @YES;
 NSNumber *buildingZIPCode = @10018;
 ```
